@@ -2,26 +2,34 @@ const websites = [
     {
         name: "Photopea",
         description: "Free online Photoshop alternative.",
-        tags: ["Free", "Photo", "Editing"],
-        logo: "https://placehold.co/80"
+        url: "https://photopea.com",
+        logo: "https://placehold.co/80/38bdf8/ffffff?text=P",
+        category: "Photo",
+        tags: ["Free", "Editing", "Design"]
     },
     {
         name: "Remove.bg",
         description: "Remove image backgrounds instantly.",
-        tags: ["AI", "Free"],
-        logo: "https://placehold.co/80"
+        url: "https://remove.bg",
+        logo: "https://placehold.co/80/22c55e/ffffff?text=R",
+        category: "AI",
+        tags: ["AI", "Free"]
     },
     {
         name: "ToffeeShare",
         description: "Fast peer-to-peer file sharing.",
-        tags: ["Files", "Free"],
-        logo: "https://placehold.co/80"
+        url: "https://toffeeshare.com",
+        logo: "https://placehold.co/80/f97316/ffffff?text=T",
+        category: "Files",
+        tags: ["Files", "Free"]
     },
     {
         name: "WindowSwap",
         description: "Look through windows from around the world.",
-        tags: ["Fun", "Travel"],
-        logo: "https://placehold.co/80"
+        url: "https://window-swap.com",
+        logo: "https://placehold.co/80/a855f7/ffffff?text=W",
+        category: "Fun",
+        tags: ["Travel", "Fun"]
     }
 ];
 
@@ -40,13 +48,32 @@ function displayWebsites(list) {
 
         cardGrid.innerHTML += `
             <div class="card">
+
                 <img src="${site.logo}" alt="${site.name}">
+
+                <span class="category">${site.category}</span>
+
                 <h3>${site.name}</h3>
+
                 <p>${site.description}</p>
 
                 <div class="tags">
                     ${tags}
                 </div>
+
+                <div class="card-buttons">
+
+                    <button class="favorite">❤</button>
+
+                    <a
+                        href="${site.url}"
+                        target="_blank"
+                        class="visit-btn">
+                        Visit →
+                    </a>
+
+                </div>
+
             </div>
         `;
 
@@ -61,11 +88,10 @@ search.addEventListener("input", () => {
     const value = search.value.toLowerCase();
 
     const filtered = websites.filter(site =>
-
         site.name.toLowerCase().includes(value) ||
         site.description.toLowerCase().includes(value) ||
+        site.category.toLowerCase().includes(value) ||
         site.tags.join(" ").toLowerCase().includes(value)
-
     );
 
     displayWebsites(filtered);
