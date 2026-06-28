@@ -1,1 +1,150 @@
+<!-- profile.html -->
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>My Profile • WebHunt</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/auth.css">
+
+</head>
+
+<body>
+
+<div class="auth-container">
+
+<div class="auth-card">
+
+<img
+id="profilePhoto"
+src="https://placehold.co/120"
+style="
+width:120px;
+height:120px;
+border-radius:50%;
+display:block;
+margin:auto;
+margin-bottom:20px;
+">
+
+<h1 id="profileName">
+
+Loading...
+
+</h1>
+
+<p id="profileEmail">
+
+Loading...
+
+</p>
+
+<hr style="
+margin:25px 0;
+border:1px solid rgba(255,255,255,.08);
+">
+
+<div style="display:grid;gap:15px;">
+
+<div class="stat">
+
+<h2 id="favoriteCount">
+
+0
+
+</h2>
+
+<p>
+
+Favorites
+
+</p>
+
+</div>
+
+<div class="stat">
+
+<h2>
+
+0
+
+</h2>
+
+<p>
+
+Collections
+
+</p>
+
+</div>
+
+<div class="stat">
+
+<h2>
+
+0
+
+</h2>
+
+<p>
+
+Submitted Websites
+
+</p>
+
+</div>
+
+</div>
+
+<br>
+
+<a
+href="favorites.html"
+class="visit-btn"
+style="
+display:block;
+text-align:center;
+">
+
+My Favorites
+
+</a>
+
+<br>
+
+<button
+onclick="logout()"
+style="
+width:100%;
+padding:15px;
+background:#ef4444;
+color:white;
+border:none;
+border-radius:12px;
+font-size:16px;
+cursor:pointer;
+">
+
+Logout
+
+</button>
+
+</div>
+
+</div>
+
+<script type="module" src="js/firebase.js"></script>
+
+<script type="module" src="js/auth.js"></script>
+
+<script type="module" src="js/profile.js"></script>
+
+</body>
+</html>
