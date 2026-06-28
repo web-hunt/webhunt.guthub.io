@@ -1,1 +1,95 @@
+<!-- signup.html -->
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Create Account • WebHunt</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/auth.css">
+
+</head>
+
+<body>
+
+<div class="auth-container">
+
+<div class="auth-card">
+
+<h1>Create Account</h1>
+
+<p>
+Join WebHunt and save your favorite websites.
+</p>
+
+<form id="signupForm">
+
+<input
+type="text"
+id="signupName"
+placeholder="Username"
+required>
+
+<input
+type="email"
+id="signupEmail"
+placeholder="Email"
+required>
+
+<input
+type="password"
+id="signupPassword"
+placeholder="Password"
+required>
+
+<input
+type="password"
+id="signupConfirm"
+placeholder="Confirm Password"
+required>
+
+<button
+type="submit">
+
+Create Account
+
+</button>
+
+</form>
+
+<button
+id="googleSignup"
+class="google-btn">
+
+Continue with Google
+
+</button>
+
+<p>
+
+Already have an account?
+
+<a href="login.html">
+
+Login
+
+</a>
+
+</p>
+
+</div>
+
+</div>
+
+<script type="module" src="js/firebase.js"></script>
+
+<script type="module" src="js/auth.js"></script>
+
+</body>
+</html>
