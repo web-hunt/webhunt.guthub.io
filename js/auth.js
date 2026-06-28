@@ -1,98 +1,105 @@
-// js/auth.js
+import { auth, googleProvider } from "./firebase.js";
 
 import {
-    auth,
-    googleProvider
-} from "./firebase.js";
-
-import {
-
     createUserWithEmailAndPassword,
-
     signInWithEmailAndPassword,
-
     signInWithPopup,
-
     updateProfile,
-
-    onAuthStateChanged,
-
-    signOut
-
+    signOut,
+    onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
-// ----------------------
-// Login
-// ----------------------
+const form = document.getElementById("authForm");
 
-const loginForm = document.getElementById("loginForm");
+const title = document.getElementById("formTitle");
+const subtitle = document.getElementById("formSubtitle");
 
-if(loginForm){
+const username = document.getElementById("username");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const confirmPassword = document.getElementById("confirmPassword");
 
-loginForm.addEventListener("submit",async(e)=>{
+const submitButton = document.getElementById("submitButton");
+
+const toggleMode = document.getElementById("toggleMode");
+const toggleText = document.getElementById("toggleText");
+
+const googleButton = document.getElementById("googleButton");
+
+let signupMode = false;
+
+function updateUI(){
+
+    if(!title) return;
+
+    if(signupMode){
+
+        title.textContent = "Create Account";
+
+        subtitle.textContent =
+        "Create your free WebHunt account.";
+
+        username.style.display = "block";
+
+        confirmPassword.style.display = "block";
+
+        submitButton.textContent = "Create Account";
+
+        toggleText.innerHTML =
+        `Already have an account?
+        <a href="#" id="toggleMode">Log In</a>`;
+
+    }else{
+
+        title.textContent = "Welcome Back";
+
+        subtitle.textContent =
+        "Log in to continue discovering amazing websites.";
+
+        username.style.display = "none";
+
+        confirmPassword.style.display = "none";
+
+        submitButton.textContent = "Log In";
+
+        toggleText.innerHTML =
+        `Don't have an account?
+        <a href="#" id="toggleMode">Create one</a>`;
+
+    }
+
+    document.getElementById("toggleMode")
+        .addEventListener("click",toggleClick);
+
+}
+
+function toggleClick(e){
+
+    e.preventDefault();
+
+    signupMode = !signupMode;
+
+    updateUI();
+
+}
+
+if(toggleMode){
+
+    toggleMode.addEventListener("click",toggleClick);
+
+}
+
+if(form){
+
+form.addEventListener("submit",async(e)=>{
 
 e.preventDefault();
-
-const email =
-document.getElementById("loginEmail").value;
-
-const password =
-document.getElementById("loginPassword").value;
 
 try{
 
-await signInWithEmailAndPassword(
+if(signupMode){
 
-auth,
-
-email,
-
-password
-
-);
-
-alert("Welcome back!");
-
-window.location.href="profile.html";
-
-}
-
-catch(error){
-
-alert(error.message);
-
-}
-
-});
-
-}
-
-// ----------------------
-// Signup
-// ----------------------
-
-const signupForm =
-document.getElementById("signupForm");
-
-if(signupForm){
-
-signupForm.addEventListener("submit",async(e)=>{
-
-e.preventDefault();
-
-const username =
-document.getElementById("signupName").value;
-
-const email =
-document.getElementById("signupEmail").value;
-
-const password =
-document.getElementById("signupPassword").value;
-
-const confirm =
-document.getElementById("signupConfirm").value;
-
-if(password!==confirm){
+if(password.value!==confirmPassword.value){
 
 alert("Passwords do not match.");
 
@@ -100,17 +107,14 @@ return;
 
 }
 
-try{
-
 const userCredential =
-
 await createUserWithEmailAndPassword(
 
 auth,
 
-email,
+email.value,
 
-password
+password.value
 
 );
 
@@ -120,7 +124,7 @@ userCredential.user,
 
 {
 
-displayName:username
+displayName:username.value
 
 }
 
@@ -128,53 +132,25 @@ displayName:username
 
 alert("Account created!");
 
-window.location.href="profile.html";
+}else{
 
-}
-
-catch(error){
-
-alert(error.message);
-
-}
-
-});
-
-}
-
-// ----------------------
-// Google Login
-// ----------------------
-
-const googleButtons=[
-
-document.getElementById("googleLogin"),
-
-document.getElementById("googleSignup")
-
-];
-
-googleButtons.forEach(button=>{
-
-if(!button) return;
-
-button.addEventListener("click",async()=>{
-
-try{
-
-await signInWithPopup(
+await signInWithEmailAndPassword(
 
 auth,
 
-googleProvider
+email.value,
+
+password.value
 
 );
 
-window.location.href="profile.html";
+alert("Welcome back!");
 
 }
 
-catch(error){
+window.location.href="profile.html";
+
+}catch(error){
 
 alert(error.message);
 
@@ -182,34 +158,54 @@ alert(error.message);
 
 });
 
-});
+}
 
-// ----------------------
-// Auth Guard
-// ----------------------
+if(googleButton){
 
-onAuthStateChanged(auth,user=>{
+googleButton.addEventListener("click",async()=>{
 
-const profilePage=
+try{
 
-window.location.pathname.includes("profile.html");
+await signInWithPopup(auth,googleProvider);
 
-if(profilePage && !user){
+window.location.href="profile.html";
 
-window.location.href="login.html";
+}catch(error){
+
+alert(error.message);
 
 }
 
 });
 
-// ----------------------
-// Logout
-// ----------------------
+}
 
-window.logout = async function(){
+onAuthStateChanged(auth,user=>{
+
+const authLinks=document.getElementById("authLinks");
+
+if(!authLinks) return;
+
+if(user){
+
+authLinks.innerHTML=
+`<a href="profile.html">👤 ${user.displayName || "Profile"}</a>`;
+
+}else{
+
+authLinks.innerHTML=
+`<a href="login.html">Login</a>`;
+
+}
+
+});
+
+window.logout = async()=>{
 
 await signOut(auth);
 
-window.location.href="login.html";
+window.location.href="index.html";
 
 };
+
+updateUI();
