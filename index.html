@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebHunt - Discover the Best Websites</title>
+    <title>WebHunt</title>
 
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -19,7 +19,7 @@
         <a href="#">Home</a>
         <a href="#">Categories</a>
         <a href="#">Collections</a>
-        <a href="#">Submit</a>
+        <a href="#">Favorites</a>
         <a href="#">About</a>
     </nav>
 
@@ -27,154 +27,134 @@
 
 <main>
 
-    <section class="hero">
+<section class="hero">
 
-        <h1>Discover the Best Websites</h1>
+<h1>Discover the Best Websites</h1>
 
-        <p>
-            Explore thousands of useful websites for AI,
-            productivity, design, developers, entertainment
-            and much more.
-        </p>
+<p>
+Search thousands of useful websites.
+</p>
 
-        <input
-            type="search"
-            placeholder="🔍 Search websites..."
-        >
+<input
+id="searchInput"
+type="search"
+placeholder="🔍 Search websites...">
 
-        <div class="chips">
-            <span>🔥 Trending</span>
-            <span>💎 Hidden Gems</span>
-            <span>⭐ Popular</span>
-            <span>🤖 AI</span>
-            <span>🛠 Tools</span>
-        </div>
+</section>
 
-    </section>
+<section class="filters">
 
-    <section class="stats">
+<h2>Filters</h2>
 
-        <div class="stat">
-            <h2>10,000+</h2>
-            <p>Websites</p>
-        </div>
+<div class="filter-grid">
 
-        <div class="stat">
-            <h2>75+</h2>
-            <p>Categories</p>
-        </div>
+<div>
 
-        <div class="stat">
-            <h2>500+</h2>
-            <p>Hidden Gems</p>
-        </div>
+<label>Category</label>
 
-        <div class="stat">
-            <h2>100%</h2>
-            <p>Free to Browse</p>
-        </div>
+<select id="categoryFilter">
 
-    </section>
+<option value="all">
+All Categories
+</option>
 
-    <section>
+<option>AI</option>
 
-        <h2>⭐ Featured Website</h2>
+<option>Photo</option>
 
-        <div class="featured-card">
+<option>Files</option>
 
-            <img src="https://placehold.co/90" alt="">
+<option>Fun</option>
 
-            <div>
+</select>
 
-                <h3>Photopea</h3>
+</div>
 
-                <p>
-                    A powerful online image editor that works
-                    directly in your browser and supports PSD files.
-                </p>
+<div>
 
-                <a href="#">Visit Website →</a>
+<label>Sort</label>
 
-            </div>
+<select id="sortFilter">
 
-        </div>
+<option value="popular">
+Most Popular
+</option>
 
-    </section>
+<option value="rating">
+Highest Rated
+</option>
 
-    <section>
+<option value="az">
+A-Z
+</option>
 
-        <h2>Browse Categories</h2>
+<option value="random">
+Random
+</option>
 
-        <div class="categories">
+</select>
 
-            <div class="category-card">🤖 AI</div>
-            <div class="category-card">🛠 Tools</div>
-            <div class="category-card">🎨 Design</div>
-            <div class="category-card">📷 Photo</div>
-            <div class="category-card">🎬 Video</div>
-            <div class="category-card">🎵 Audio</div>
-            <div class="category-card">💻 Developers</div>
-            <div class="category-card">📚 Learning</div>
-            <div class="category-card">🌍 Productivity</div>
-            <div class="category-card">🎮 Fun</div>
+</div>
 
-        </div>
+</div>
 
-    </section>
+<div class="checkboxes">
 
-    <section>
+<label>
 
-        <h2>🔥 Trending Websites</h2>
+<input
+type="checkbox"
+id="trendingFilter">
 
-        <div class="card-grid"></div>
+Trending
 
-    </section>
+</label>
 
-    <section>
+<label>
 
-        <h2>💎 Hidden Gems</h2>
+<input
+type="checkbox"
+id="hiddenFilter">
 
-        <div class="card-grid"></div>
+Hidden Gems
 
-    </section>
+</label>
 
-    <section>
+<label>
 
-        <h2>🆕 Recently Added</h2>
+<input
+type="checkbox"
+id="recentFilter">
 
-        <div class="card-grid"></div>
+Recently Added
 
-    </section>
+</label>
 
-    <section class="random">
+</div>
 
-        <h2>🎲 Feeling Lucky?</h2>
+</section>
 
-        <p>
-            Discover a random website from our collection.
-        </p>
+<section>
 
-        <button id="randomBtn">
-            Take Me Somewhere →
-        </button>
+<h2 id="resultTitle">
+Results
+</h2>
 
-    </section>
+<div class="card-grid">
+
+</div>
+
+</section>
 
 </main>
 
 <footer>
 
-    <div class="footer-links">
+<p>
 
-        <a href="#">About</a>
-        <a href="#">Categories</a>
-        <a href="#">Collections</a>
-        <a href="#">Submit</a>
-        <a href="#">Contact</a>
+© 2026 WebHunt
 
-    </div>
-
-    <p>© 2026 WebHunt. Discover the web.</p>
+</p>
 
 </footer>
 
