@@ -26,24 +26,40 @@ a{
     text-decoration:none;
 }
 
-header{
-    position:sticky;
-    top:0;
-    z-index:1000;
+/* Header */
 
+header{
     display:flex;
     justify-content:space-between;
     align-items:center;
 
-    padding:20px 8%;
+    padding:20px 60px;
 
-    background:rgba(15,23,42,.9);
+    background:#111827;
 
-    backdrop-filter:blur(12px);
+    border-bottom:1px solid #232b3d;
 
-    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
+#navbar{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+#navbar a{
+    color:#d1d5db;
+    text-decoration:none;
+    font-weight:500;
+    transition:.25s;
+}
+
+#navbar a:hover{
+    color:#3b82f6;
+}
 .logo{
     font-size:30px;
     font-weight:bold;
