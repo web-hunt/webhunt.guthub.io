@@ -353,3 +353,77 @@ gap:15px;
 }
 
 }
+
+/* =========================
+   Logo
+========================= */
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+text-decoration:none;
+
+}
+
+.logo-icon{
+
+transition:.3s;
+
+}
+
+.logo:hover .logo-icon{
+
+transform:rotate(15deg) scale(1.08);
+
+}
+
+.logo-text{
+
+font-size:28px;
+
+font-weight:800;
+
+letter-spacing:-0.5px;
+
+}
+
+.logo-web{
+
+color:#ffffff;
+
+}
+
+.logo-hunt{
+
+background:linear-gradient(135deg,#3b82f6,#8b5cf6);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+background-clip:text;
+
+}
+
+@media(max-width:768px){
+
+.logo-text{
+
+font-size:22px;
+
+}
+
+.logo-icon{
+
+width:30px;
+
+height:30px;
+
+}
+
+}
